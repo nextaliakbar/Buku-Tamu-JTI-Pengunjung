@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Pengunjung Baru</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .contennya {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .kartunya {
+        width: 1000px;
+        padding: 16px;
+        border: 2px solid #dee2e6;
+        border-radius: 0.8rem;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .kartunya p {
+        text-align: center;
+        color: rgb(31, 159, 251);
+        font-size: 30px;
+        font-weight: 700;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .col-auto {
+        display: flex;
+        justify-content: end;
+        gap: 1rem;
+      }
+      .data {
+        font-weight: bold;
+      }
+      .hidden {
+        display: none;
+      }
+      .mb-3 {
+        min-height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contennya">
+      <div class="card kartunya">
+        <form class="px-1 py-2" th:object="${individual}" th:action="@{/perorangan}" method="POST">
+          <p>Form Buku Tamu</p>
+          <div class="mb-3 row">
+            <label for="dataTamu" class="col-sm-2 col-form-label data"
+              >Data Diri</label
+            >
+          </div>
+          <div class="mb-3 row">
+            <div class="col-sm-2"><span class="indent">Nama</span></div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="namaTamu" th:field="${individual.guest.name}" required
+              />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <div class="col-sm-2"><span class="indent">Tempat Lahir</span></div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="namaTamu" th:field="${individual.guest.placeOfBirth}" required/>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <div class="col-sm-2">
+              <span class="indent">Tanggal Lahir</span>
+            </div>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="dateInput" th:field="${individual.guest.dateOfBirth}" required/>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label indent">Jenis Kelamin</label>
+            <div class="col-sm-10 d-flex align-items-center">
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="Laki-laki"
+                  th:field="${individual.guest.gender}"
+                />
+                <label class="form-check-label" for="inlineRadio1"
+                  >Laki-laki</label
+                >
+              </div>
+              <div class="form-check form-check-inline ms-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="Perempuan"
+                  th:field="${individual.guest.gender}"
+                />
+                <label class="form-check-label" for="inlineRadio1"
+                  >Perempuan</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <div class="col-sm-2"><span class="indent">No.HP/Wa</span></div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="namaTamu" th:field="${individual.guest.noHp}" required/>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label indent">Jenis Tamu</label>
+            <div class="col-sm-10 d-flex align-items-center">
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="jenisLembaga"
+                  id="jenisLokal"
+                  value="Lokal"
+                  onclick="toggleVisibility()"
+                />
+                <label class="form-check-label" for="jenisLokal">Lokal</label>
+              </div>
+              <div class="form-check form-check-inline ms-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="jenisLembaga"
+                  id="jenisNasional"
+                  value="Nasional"
+                  onclick="toggleVisibility()"
+                />
+                <label class="form-check-label" for="jenisNasional"
+                  >Nasional</label
+                >
+              </div>
+              <div class="form-check form-check-inline ms-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="jenisLembaga"
+                  id="jenisInternasional"
+                  value="Internasional"
+                  onclick="toggleVisibility()"
+                />
+                <label class="form-check-label" for="jenisInternasional"
+                  >Internasional</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div id="negaraSection" class="mb-3 row hidden">
+            <div class="col-sm-2"><span class="indent">Negara</span></div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="namaTamu" th:field="${individual.address.country}"/>
+            </div>
+          </div>
+          <div id="provinsiSection" class="mb-3 row hidden">
+            <div class="col-sm-2"><span class="indent">Provinsi</span></div>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Pilih Provinsi" id="provinces" th:field="${individual.address.province}">
+                <option value="0" selected>-Pilih Provinsi-</option>
+                <option
+                  th:each="province : ${provinces}"
+                  th:value="${province.id}"
+                  th:text="${province.name}"
+                >
+                </option>
+              </select>
+            </div>
+          </div>
+          <div id="kotaSection" class="mb-3 row hidden">
+            <div class="col-sm-2"><span class="indent">Kota</span></div>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Pilih Kota" name="regencyId" id="regencies" th:field="${individual.address.city}">
+                <option value="0">-Pilih Kabupaten-</option>
+              </select>
+            </div>
+          </div>
+          <div id="kecamatanSection" class="mb-3 row hidden">
+            <div class="col-sm-2"><span class="indent">Kecamatan</span></div>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Pilih Kecamatan" name="subdistrictId" id="subdistricts" th:field="${individual.address.subdistrict}">
+                <option value="0" selected>-Pilih Kecamatan-</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label
+              for="deskripsiKeperluan"
+              class="col-sm-2 col-form-label indent"
+              >Deskripsi Alamat</label
+            >
+            <div class="col-sm-10">
+              <textarea
+                class="form-control"
+                id="deskripsiKeperluan"
+                rows="3"
+                th:field="${individual.address.description}"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="keperluan" class="col-sm-2 col-form-label indent"
+              >Keperluan</label
+            >
+            <div class="col-sm-10">
+              <select class="form-select" id="keperluan" aria-label="Keperluan" th:field="${individual.need.title}">
+                <option value="Pertemuan" selected>Pertemuan</option>
+                <option value="Kunjungan">Kunjungan</option>
+                <option value="Konsultasi">Konsultasi</option>
+                <option value="Lain-lain">Lain-lain</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label
+              for="deskripsiKeperluan"
+              class="col-sm-2 col-form-label indent"
+              >Deskripsi Keperluan</label
+            >
+            <div class="col-sm-10">
+              <textarea
+                class="form-control"
+                id="deskripsiKeperluan"
+                rows="3"
+                th:field="${individual.need.description}"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <button
+              type="button"
+              class="btn btn-primary"
+              th:onclick="'location.href=\'' + @{/} + '\''"
+            >
+              Kembali
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              Simpan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script th:src="@{js/script.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,371 @@
+/* Import Font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+/* General Styling */
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box; /* To include padding and border in element's total width and height */
+}
+
+body {
+  background: #f1fbff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  padding-top: 56px;
+}
+.bg-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/* Navbar Styling */
+.navbar,
+.welcome-section,
+.section-padding {
+  padding: 0;
+  margin: 0;
+}
+.navbar {
+  background-color: #fff;
+  position: fixed; /* Ensure navbar is positioned for z-index */
+  z-index: 10; /* Make sure navbar is on top of other content */
+  padding: 10px;
+  width: 100%;
+}
+
+.navbar .getstarted {
+  background: #000000;
+  margin-left: 30px;
+  border-radius: 4px;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  line-height: 2.3;
+}
+
+.imagenav {
+  max-height: 40px;
+  width: auto;
+}
+.navbar-brand {
+  color: #000;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav-text {
+  margin-left: 20px;
+}
+
+.navbar-nav a {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.navbar-light .navbar-brand {
+  color: #000;
+  font-size: 25px;
+  /* text-transform: uppercase; */
+  font-weight: bold;
+}
+
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+  color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #000;
+}
+
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  border: none;
+  background: #fff;
+}
+
+.navbar-toggler-line {
+  display: block; /* Mengatur menjadi block */
+  width: 30px; /* Lebar garis */
+  height: 2.3px; /* Tinggi garis */
+  background-color: #000; /* Warna garis hitam */
+  margin: 6px auto; /* Jarak antara garis */
+}
+
+.welcome-section {
+  /* background-image: url("path/to/your/image.jpg"); Ganti dengan path gambar latar belakang Anda */
+  /* background-size: cover;
+  background-position: center; */
+  height: 100vh; /* Memastikan elemen mengambil tinggi penuh viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Menyelaraskan konten secara vertikal */
+  align-items: center; /* Menyelaraskan konten secara horizontal */
+  text-align: center; /* Memastikan teks berada di tengah */
+}
+.welcome-content {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1; /* Ensure content is on top of background image */
+}
+
+.welcome-content h1 {
+  color: #fff; /* White text for contrast */
+  font-weight: bold; /* Bold font */
+  font-size: 4rem;
+  margin-top: auto;
+  text-align: center;
+  justify-content: center;
+  font-family: Montserrat;
+}
+.welcome-content p {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+.welcome-line {
+  display: block; /* Each span as a new block */
+}
+.button-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+.btnIsi {
+  background-color: #4285f4;
+}
+.btnPel {
+  background-color: #4285f4;
+}
+.btn:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+.btn img {
+  margin-right: 8px; /* Spasi antara gambar dan teks */
+  width: 30px; /* Ukuran gambar */
+  height: 30px; /* Ukuran gambar */
+}
+.section-padding {
+  /* padding: 100px 0; */
+  margin-top: 0;
+}
+
+/* Carousel Styling */
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+}
+
+.carousel-caption {
+  bottom: 220px;
+  z-index: 2;
+}
+
+.carousel-caption h5 {
+  font-size: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+
+.carousel-caption p {
+  width: 60%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.carousel-inner:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.custom-btn {
+  background-color: #905bd4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.custom-btn:hover {
+  background-color: #8354c2;
+}
+
+.about {
+  margin-top: auto;
+}
+
+.awal {
+  text-align: justify;
+}
+
+.image1 {
+  width: 100%; /* Full width of the container */
+  height: auto; /* Automatic height to maintain aspect ratio */
+}
+
+.about-text {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+/* Responsive Design */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .carousel-caption {
+    bottom: 370px;
+  }
+
+  .carousel-caption p {
+    width: 100%;
+  }
+
+  .card {
+    margin-bottom: 30px;
+  }
+
+  .img-area img {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .carousel-caption {
+    bottom: 125px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 17px;
+  }
+  .btn {
+    font-size: 12px;
+  }
+
+  .carousel-caption a {
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+  .welcome-content p {
+    font-size: 15px;
+  }
+
+  .carousel-caption p {
+    width: 100%;
+    line-height: 1.6;
+    font-size: 12px;
+  }
+  .welcome-section {
+    margin-bottom: 0; /* Pastikan tidak ada margin bawah */
+  }
+
+  .about {
+    margin-top: 0; /* Pastikan tidak ada margin atas */
+  }
+
+  .about-text {
+    padding-top: 50px;
+  }
+  .welcome-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .card {
+    margin-bottom: 30px;
+  }
+  .jurusan {
+    margin-bottom: 20px; /* Pastikan ada margin bawah */
+  }
+
+  .gedung,
+  .mapouter {
+    height: 200px; /* Adjust height for smaller screens */
+    margin-bottom: 20px; /* Tambahkan margin bawah */
+  }
+}
+.jurusan {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 20px; /* Margin around the section */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.gedung,
+.mapouter {
+  width: 100%; /* Full width for responsiveness */
+  max-width: 600px; /* Max width for larger screens */
+  height: 300px; /* Fixed height */
+  margin: 0 10px; /* Space between image and map */
+}
+
+.mapouter {
+  position: relative;
+  max-width: 600px; /* Maximum width */
+}
+
+.gmap_canvas {
+  width: 100%;
+  height: 100%;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+footer {
+  background-color: #1e1e1e; /* Mengubah warna footer menjadi hitam */
+  padding: 10px 0; /* Memberikan padding atas dan bawah */
+  text-align: center; /* Menyelaraskan teks di tengah */
+  color: #fff;
+}
+.footer-logo {
+  max-width: 300px;
+  height: auto;
+}
+footer p,
+footer h6 {
+  color: #fff;
+}
+footer i {
+  color: #fff;
+}
